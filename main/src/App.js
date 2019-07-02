@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
+import {BrowserRouter, Route} from 'react-router-dom';
+import AuthRedirect from './component/AuthRedirect/AuthRedirect';
+import Landing from './component/Landing/Landing';
+import JobSearch from '../src/component/JobSearch/JobSearch';
+import JobsSaved from '../src/component/JobsSaved/JobsSaved';
+import NavBar from '../src/component/NavBar/NavBar';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+export default class App extends Component {
+  render() {
+    return (
+      <main id='main'>
+        <BrowserRouter>
+          <NavBar/>
+
+            <Route path='*' component={AuthRedirect}/>
+            <Route exact path="/" component={Landing}/>
+            <Route exact path="/user" component={JobSearch}/>
+            <Route exact path="/signup" component={Landing}/>
+            <Route exact path="/myjobs" component={JobsSaved}/>
+
+        </BrowserRouter>
+    </main>
   );
+  }
 }
-
-export default App;
