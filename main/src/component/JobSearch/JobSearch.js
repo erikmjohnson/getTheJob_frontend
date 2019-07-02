@@ -13,7 +13,7 @@ import superagent from "superagent";
 import {Card} from "@material-ui/core";
 import CardContent from '@material-ui/core/CardContent';
 
-const API_URL = 'http://localhost:8000/';
+const API_URL = 'https://get-the-job-backend.herokuapp.com/';
 const SAVE_ROUTE = `save/`;
 
 export class JobSearch extends Component {
