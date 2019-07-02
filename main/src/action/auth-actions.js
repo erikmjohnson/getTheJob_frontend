@@ -9,7 +9,7 @@ export const remove = () => ({
   type:'TOKEN_REMOVE',
 });
 
-const API_URL = 'http://localhost:8000/';
+const API_URL = 'https://get-the-job-backend.herokuapp.com/';
 const SIGNUP_ROUTE = 'signup';
 const SIGNIN_ROUTE = 'signin';
 
