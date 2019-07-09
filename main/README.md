@@ -1,55 +1,72 @@
-![CF](../assets/iconmonstr-handshake-8-240.png) Jobberwocky - a Job Search App
-==============================================
+# Project JobberWocky
 
-## 
-[Build Status]
+## We are deployed on GitHub
+[JobberWocky Web App](https://erikmjohnson.github.io/getTheJob_frontend/)
+-
 
-### Authors: Anthony, Erik, Lorin, Sarkis & Xochil
+## Web Application
 
-### Links and Resources
-* [repo](https://github.com/techhired/front_end_getTheJob)
-* [travis]()
-* [Heroku]()
+Since we were about to graduate from coding bootcamp, we decided to build a job searching website. This website is 
+different from other job searching websites in that you are able to check multiple job sites at once with a particular
+job search. Once the list appears, you can add it to your profile and keep track of the different jobs you have been
+applying to.
+---------------------------------
+## Tools Used
 
-
-### Environment Setup
-#### .env
-- `PORT` 3000
-
-### Modules
-- *`index.js`*: connects our app to the the store
-- *`app.js`*: contains our Browser Router with all our front end routes
-- *`AuthForm`*: contains the form for user to sign up
-- *`AuthRedirect`*: contains the logic to sign the user in or up
-- *`JobSearch`*: contains the ability to search for a job based on keyword and location
-- *`JobSearchForm`*: contains the logic to render job postings with title, location, summary and URL
-- *`JobsSaved`*: contains the saved job the user selects
-- *`Landing`*: front page of the app.  Contains the ability to sign in or up.
-- *`NavBar`*: Material-UI Nav bar
-- *`thunk-middleware`*: contains our front end middleware
-
-#### Exported Values and Methods
-###### `handleJobRender`: renders a mapped object of jobs
-###### `handleLogOut` : logs user out
-
-#### Tests
-* To run tests, please use the `npm run test` command.
-* Tests cover the following:
-  ##### Routes
-  * `/user` should return 200 status
-  * `/signup` should return 200 status
-  * `/signin` should return 200 status
-  * `/myjob` should return 200 status
-  
- #### Modules / Functionality
- ###### `Landing`: renders the signin and signup cards
- ###### `AuthForm`: the form for signin and signup 
- ###### `JobSearch`: the search form and renderer for the job api data
- ###### `JobSearchForm`: the form for looking up jobs from the job api
- 
- ##### MongoDB
-  * Tests `POST`
-  * Tests `GET`
-
-#### UML
-![diagram](../assets/JOBBERWOCKY%20UML.png)
+* @material-ui/core
+* @material-ui/icons
+* cross-fetch
+* gh-pages
+* node-sass
+* react
+* react-dom
+* react-redux
+* react-router-dom
+* react-scripts
+* redux
+* redux-devtools-extension
+* redux-form
+* superagent
+* uuid
+---------------------------------
+## Getting Started
+Clone this repository to your local machine.
+```
+$ git clone https://github.com/erikmjohnson/getTheJob_frontend.git
+```
+Once downloaded, install the packages.
+```
+cd YourRepo/YourProject
+`npm i`
+```
+---------------------------------
+## Usage
+### Login Page
+![login](../assets/login.png)
+### Signin Page
+![Sign](../assets/signin.jpg)
+### Job Search Page
+![Search]()
+### Listing
+![listing]()
+### Add listing
+![add]()
+### My Profile
+![profile]()
+### Delete Item
+![delete]()
+---------------------------
+## Data Flow (Frontend, Backend, REST API)
+![Data Flow Diagram](../assets/dataflow.jpg)
+---------------------------
+## Data Model
+### Overall Project Schema
+![Database Schema](../assets/DB.jpg)
+---------------------------
+## Authors
+* Erik M. Johnson
+* Sarkis Aghazarian 
+* Anthony Triplett
+* Xochil
+* Lorin Stewart 
+------------------------------
