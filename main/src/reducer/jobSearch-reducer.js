@@ -7,6 +7,7 @@ export default (state = [], {type, payload}) => {
         return state = tempArr;
       }
       return [...state, payload];
+
     default:
       return state;
   }
