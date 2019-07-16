@@ -19,17 +19,20 @@ const API_URL = 'http://localhost:8000/retrieve/';
 export const loadProfile = (username) => store => {
   return superagent.get(`${API_URL}${username}`)
     .then(results =>{
-      console.log(results);
+      let request = results.body;
+
+      return request.forEach(current => store.dispatch(
+        createProfile(
+          current.organization,
+          current.title,
+          current.location,
+          current.summary,
+          current.date,
+          current.url,
+        )))
     })
     .catch(err => console.log(err));
 };
 
 
-//might be able to pull username from main page profile
-// const mapStateToProps = state => {
-//   return {
-//     authAction: state.token
-//   }
-// };
-//
-// export default connect(mapStateToProps);
+

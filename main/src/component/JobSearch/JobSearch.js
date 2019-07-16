@@ -6,6 +6,8 @@ import * as JobSearchActions from '../../action/jobSearch-actions';
 import * as authAuctions from '../../action/auth-actions';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid'
 import uuid from 'uuid';
 import superagent from "superagent";
 import {Card} from "@material-ui/core";
@@ -34,7 +36,10 @@ export class JobSearch extends Component {
     };
 
     renderProfile = (username) => {
-      return super.get('http://localhost:8000/profile/')
+      return superagent.get(`http://localhost:8000/retrieve/${username}`)
+        .then(result => {
+            console.log(result.body);
+        });
     };
 
     render() {
@@ -43,7 +48,7 @@ export class JobSearch extends Component {
                 <Button id='logOut' variant='contained' color='default' onClick={this.handleLogout}> Sign Out </Button>
                 <Typography>
                 <li>
-                    <Link component={RouterLink} to="/myjobs"> My Jobs </Link>
+                    <Link component={RouterLink} to="/myjobs" onClick={this.renderProfile.bind(null, 'test')}> My Jobs </Link>
                 </li>
                 </Typography>
                 <ul>
@@ -79,6 +84,7 @@ const mapStateToProps = state => {
     return {
         jobSearch: state.jobSearch,
         authAction: state.token,
+        profile: state.profile,
     }
 };
 
