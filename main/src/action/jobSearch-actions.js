@@ -25,15 +25,16 @@ export const loadJobSearch = (language, location) => store => {
     .then(response => {
       let mainRequest = response.body.SearchResult.SearchResultItems;
 
-      return mainRequest.forEach(current => store.dispatch(
-        createJob(
-          current.MatchedObjectDescriptor.OrganizationName,
-          current.MatchedObjectDescriptor.PositionTitle,
-          current.MatchedObjectDescriptor.PositionLocationDisplay,
-          current.MatchedObjectDescriptor.UserArea.Details.JobSummary,
-          current.MatchedObjectDescriptor.PublicationStartDate,
-          current.MatchedObjectDescriptor.PositionURI
-        )))
+      return mainRequest.forEach(current =>
+        store.dispatch(
+          createJob(
+            current.MatchedObjectDescriptor.OrganizationName,
+            current.MatchedObjectDescriptor.PositionTitle,
+            current.MatchedObjectDescriptor.PositionLocationDisplay,
+            current.MatchedObjectDescriptor.UserArea.Details.JobSummary,
+            current.MatchedObjectDescriptor.PublicationStartDate,
+            current.MatchedObjectDescriptor.PositionURI
+          )))
     })
     .catch(console.log);
 };
