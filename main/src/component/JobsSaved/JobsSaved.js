@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 
-export default class JobsSaved extends Component {
+export class JobsSaved extends Component {
 
   render() {
     return (
@@ -18,3 +19,12 @@ export default class JobsSaved extends Component {
     )
   }
 }
+
+
+const mapStateToProps = state => {
+  return {
+    profile: state.profile,
+  }
+};
+
+export default connect(mapStateToProps)(JobsSaved);

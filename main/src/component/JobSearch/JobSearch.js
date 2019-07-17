@@ -4,6 +4,7 @@ import {Link as RouterLink} from 'react-router-dom';
 import JobSearchForm from '../JobSearchForm/JobSearchForm';
 import * as JobSearchActions from '../../action/jobSearch-actions';
 import * as authAuctions from '../../action/auth-actions';
+import * as profileActions from '../../action/profile-actions';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
@@ -18,7 +19,7 @@ const SAVE_ROUTE = `save/`;
 
 export class JobSearch extends Component {
 
-    handleJobRender = job => {
+    handleJobRender = (job) => {
         if(job.title && job.location) {
             return this.props.mappedJobCreates(job.title, job.location);
         }
@@ -36,10 +37,9 @@ export class JobSearch extends Component {
     };
 
     renderProfile = (username) => {
-      return superagent.get(`http://localhost:8000/retrieve/${username}`)
-        .then(result => {
-            console.log(result.body);
-        });
+      return this.props.mappedProfile(username)
+        .then(() => {console.log(this.props.profile)})
+        .catch(console.log);
     };
 
     render() {
@@ -96,6 +96,9 @@ const mapDispatchToProps = dispatch => {
         logOut: () => {
             dispatch(authAuctions.remove());
         },
+        mappedProfile: (username) => {
+          dispatch(profileActions.loadProfile(username));
+       },
     }
 };
 
