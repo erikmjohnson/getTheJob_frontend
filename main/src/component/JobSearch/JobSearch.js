@@ -38,11 +38,11 @@ export class JobSearch extends Component {
 
     renderProfile = (username) => {
       return this.props.mappedProfile(username)
-        .then(() => {console.log(this.props.profileState)})
-        .catch(console.log);
     };
     // onClick={this.renderProfile.bind(null, 'test')} -> this clip belongs on line 52 after "/myjobs"
-
+    consoleState = () =>{
+      console.log(this.props.profileState);
+    };
     render() {
         return (
             <div style={{backgroundColor:'darkgray', minHeight: '100vh'}}>
@@ -50,6 +50,8 @@ export class JobSearch extends Component {
                 <Typography>
                 <li>
                     <Link component={RouterLink} to="/myjobs"> My Jobs </Link>
+                  <button onClick={this.renderProfile.bind(null, 'test')}>Testing profile reteive</button>
+                  <button onClick={this.consoleState}>Testing State</button>
                 </li>
                 </Typography>
                 <ul>
@@ -98,7 +100,7 @@ const mapDispatchToProps = dispatch => {
             dispatch(authAuctions.remove());
         },
         mappedProfile: (username) => {
-          dispatch(profileActions.loadProfile(username));
+          dispatch(profileActions.loadProfile(username))
        },
     }
 };
