@@ -1,9 +1,10 @@
 import superagent from 'superagent';
 
-export const createProfile = (organization, title, location, summary, created, url) => {
+export const createProfile = (id, organization, title, location, summary, created, url) => {
   return {
     type: 'PROFILE',
     payload: {
+      id,
       organization,
       title,
       location,
@@ -24,14 +25,16 @@ export const loadProfile = (username) => store => {
       return request.forEach(current =>
         store.dispatch(
           createProfile(
+            current._id,
             current.organization,
             current.title,
             current.location,
             current.summary,
             current.date,
-            current.url,
-          ))
+            current.url
+          )
         )
+      )
     })
     .catch(err => console.log(err));
 };

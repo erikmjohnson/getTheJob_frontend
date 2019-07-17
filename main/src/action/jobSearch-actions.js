@@ -34,9 +34,11 @@ export const loadJobSearch = (language, location) => store => {
             current.MatchedObjectDescriptor.UserArea.Details.JobSummary,
             current.MatchedObjectDescriptor.PublicationStartDate,
             current.MatchedObjectDescriptor.PositionURI
-          )))
+          )
+        )
+      )
     })
-    .catch(console.log);
+    .catch(err => console.log(err));
 };
 
 
