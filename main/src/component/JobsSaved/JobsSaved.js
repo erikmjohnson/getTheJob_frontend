@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 
 export class JobsSaved extends Component {
 
+
   render() {
     return (
       <div><h1> SAVED JOBS </h1>
@@ -14,6 +15,7 @@ export class JobsSaved extends Component {
           <Link component={RouterLink} to="/user"> Search Page </Link>
         </li>
         </Typography>
+
       </div>
 
     )
@@ -23,7 +25,8 @@ export class JobsSaved extends Component {
 
 const mapStateToProps = state => {
   return {
-    profile: state.profile,
+    profileState: state.profile,
+    userState: state.token,
   }
 };
 

@@ -31,16 +31,17 @@ export class JobSearch extends Component {
     };
 
     addJob = (profile) => {
-        return superagent.post(`${API_URL}${SAVE_ROUTE}${this.props.authAction.username}`)
+        return superagent.post(`${API_URL}${SAVE_ROUTE}${this.props.authState.username}`)
           .send(profile)
           .catch(console.log);
     };
 
     renderProfile = (username) => {
       return this.props.mappedProfile(username)
-        .then(() => {console.log(this.props.profile)})
+        .then(() => {console.log(this.props.profileState)})
         .catch(console.log);
     };
+    // onClick={this.renderProfile.bind(null, 'test')} -> this clip belongs on line 52 after "/myjobs"
 
     render() {
         return (
@@ -48,13 +49,13 @@ export class JobSearch extends Component {
                 <Button id='logOut' variant='contained' color='default' onClick={this.handleLogout}> Sign Out </Button>
                 <Typography>
                 <li>
-                    <Link component={RouterLink} to="/myjobs" onClick={this.renderProfile.bind(null, 'test')}> My Jobs </Link>
+                    <Link component={RouterLink} to="/myjobs"> My Jobs </Link>
                 </li>
                 </Typography>
                 <ul>
                     <JobSearchForm onComplete={this.handleJobRender}/>
                     <Grid container spacing={24} style={{padding:24}}>
-                    { this.props.jobSearch.map(current => ( <Grid item xs={6} sm={6} lg={4} xl={3}>
+                    { this.props.searchState.map(current => ( <Grid item xs={6} sm={6} lg={4} xl={3}>
                         <Card>
                             <CardContent>
                        <li style={{backgroundColor: '#f5f5f5'}} key={uuid()}>
@@ -82,9 +83,9 @@ export class JobSearch extends Component {
 
 const mapStateToProps = state => {
     return {
-        jobSearch: state.jobSearch,
-        authAction: state.token,
-        profile: state.profile,
+        searchState: state.jobSearch,
+        authState: state.token,
+        profileState: state.profile,
     }
 };
 
