@@ -15,6 +15,12 @@ export const createProfile = (id, organization, title, location, summary, create
   }
 };
 
+export const removeProfile = () => ({
+  type: 'REMOVE_PROFILE'
+});
+
+// export const
+
 const API_URL = 'http://localhost:8000/retrieve/';
 
 export const loadProfile = (username) => store => {

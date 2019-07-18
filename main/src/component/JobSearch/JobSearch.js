@@ -30,29 +30,25 @@ export class JobSearch extends Component {
         return this.props.logOut();
     };
 
-    addJob = (profile) => {
+    handleAddJob = (profile) => {
         return superagent.post(`${API_URL}${SAVE_ROUTE}${this.props.authState.username}`)
           .send(profile)
-          .catch(console.log);
+          .catch(err => console.log(err));
     };
 
-    renderProfile = (username) => {
-      return this.props.mappedProfile(username)
+    handleRenderProfile = () => {
+      return this.props.mappedProfile(this.props.authState.username)
     };
-    // onClick={this.renderProfile.bind(null, 'test')} -> this clip belongs on line 52 after "/myjobs"
-    consoleState = () =>{
-      console.log(this.props.profileState);
-    };
+
+
     render() {
         return (
             <div style={{backgroundColor:'darkgray', minHeight: '100vh'}}>
                 <Button id='logOut' variant='contained' color='default' onClick={this.handleLogout}> Sign Out </Button>
                 <Typography>
-                <li>
+                <button onClick={this.handleRenderProfile}>
                     <Link component={RouterLink} to="/myjobs"> My Jobs </Link>
-                  <button onClick={this.renderProfile.bind(null, 'test')}>Testing profile reteive</button>
-                  <button onClick={this.consoleState}>Testing State</button>
-                </li>
+                </button>
                 </Typography>
                 <ul>
                     <JobSearchForm onComplete={this.handleJobRender}/>
@@ -67,7 +63,7 @@ export class JobSearch extends Component {
                            <p>{current.summary}</p><br/>
                            <p>{current.created}</p><br/>
                        <br/><a href={current.url}>{current.url}</a><br/>
-                       <Button variant='contained' color='default' onClick={this.addJob.bind(null, current)}>Add Job</Button>
+                       {/*<Button variant='contained' color='default' onClick={this.handleAddJob.bind(null, current)}>Add Job</Button>*/}
                        </li>
                             </CardContent>
                         </Card>
