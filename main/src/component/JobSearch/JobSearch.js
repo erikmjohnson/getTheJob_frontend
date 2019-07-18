@@ -40,7 +40,6 @@ export class JobSearch extends Component {
       return this.props.mappedProfile(this.props.authState.username)
     };
 
-
     render() {
         return (
             <div style={{backgroundColor:'darkgray', minHeight: '100vh'}}>
@@ -63,11 +62,10 @@ export class JobSearch extends Component {
                            <p>{current.summary}</p><br/>
                            <p>{current.created}</p><br/>
                        <br/><a href={current.url}>{current.url}</a><br/>
-                       {/*<Button variant='contained' color='default' onClick={this.handleAddJob.bind(null, current)}>Add Job</Button>*/}
+                       <Button variant='contained' color='default' onClick={this.handleAddJob.bind(null, current)}>Add Job</Button>
                        </li>
                             </CardContent>
                         </Card>
-
                       </Grid>
                     ))
                     }
