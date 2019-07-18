@@ -3,14 +3,17 @@ import { connect } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
-import { removeProfile } from '../../action/profile-actions'
+import { removeProfile, removeJob } from '../../action/profile-actions'
 import {Card} from "@material-ui/core";
 import uuid from "uuid";
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
+import superagent from 'superagent';
+
+const API_URL = 'http://localhost:8000/delete';
 
 export class JobsSaved extends Component {
-  consoleState = () =>{
+  consoleState = () => {
     console.log(this.props.profileState);
   };
 
@@ -18,8 +21,11 @@ export class JobsSaved extends Component {
     this.props.removeProfile();
   };
 
-  handleDelete = () => {
-
+  handleDelete = (job) => {
+    this.props.removeJob(job);
+    return superagent.delete(`${API_URL}/${this.props.userState.username}`)
+      .send(job)
+      .catch(err => console.log(err));
   };
 
   render() {
@@ -42,7 +48,7 @@ export class JobsSaved extends Component {
                       <p>{current.summary}</p><br/>
                       <p>{current.created}</p><br/>
                       <br/><a href={current.url}>{current.url}</a><br/>
-                      <Button variant='contained' color='default' onClick={this.handleAddJob.bind(null, current)}>Add Job</Button>
+                      <Button variant='contained' color='default' onClick={this.handleDelete.bind(null, current)}>Delete Job</Button>
                     </li>
                   </CardContent>
                 </Card>
@@ -67,8 +73,8 @@ const mapDispatchToProps = dispatch => {
     removeProfile: () => {
       dispatch(removeProfile());
     },
-    removeJob: () => {
-      dispatch()
+    removeJob: (job) => {
+      dispatch(removeJob(job))
     }
   }
 };

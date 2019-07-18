@@ -19,7 +19,10 @@ export const removeProfile = () => ({
   type: 'REMOVE_PROFILE'
 });
 
-// export const
+export const removeJob = (job) => ({
+  type: 'REMOVE_JOB',
+  payload: job,
+});
 
 const API_URL = 'http://localhost:8000/retrieve/';
 
