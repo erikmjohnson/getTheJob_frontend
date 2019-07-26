@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import {Provider} from 'react-redux';
+import './styles/main.scss';
 
 import createApplicationStore from './createstore/create-store';
 

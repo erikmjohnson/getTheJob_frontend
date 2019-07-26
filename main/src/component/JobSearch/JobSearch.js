@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {Link as RouterLink} from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import JobSearchForm from '../JobSearchForm/JobSearchForm';
 import * as JobSearchActions from '../../action/jobSearch-actions';
 import * as authAuctions from '../../action/auth-actions';
@@ -11,10 +11,11 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid'
 import uuid from 'uuid';
 import superagent from "superagent";
-import {Card} from "@material-ui/core";
+import { Card } from "@material-ui/core";
 import CardContent from '@material-ui/core/CardContent';
 
-const API_URL = 'https://get-the-job-backend.herokuapp.com/';
+// const API_URL = 'https://get-the-job-backend.herokuapp.com/';
+const API_URL = 'http://localhost:8000/';
 const SAVE_ROUTE = `save/`;
 
 export class JobSearch extends Component {
