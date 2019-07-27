@@ -21,13 +21,13 @@ class Landing extends React.Component {
 render() {
 
   const signIn =
-    <Grid style={{marginTop: '1%'}} container={true} direction='row' alignItems='flex-start' spacing={0}>
-      <div>
-        <Grid item style={{width: '250px', margin: 'auto'}}>
+    <Grid style={{marginTop: '1%'}} container={true} direction='row' alignItems='center'>
+      <div className='authForm'>
+        <Grid item style={{width: '75%'}}>
           <Card>
             <CardContent>
-              <Grid container={true} direction='column' justify='space-evenly' alignItems='center' alignContent='center' spacing={0} >
-                <Grid item>
+              <Grid container={true} direction='column' justify='space-evenly' alignItems='center' alignContent='center'>
+                <Grid item style={{marginBottom:'5%'}}>
                   <h1>Login</h1>
                 </Grid>
                 <Grid item>
@@ -46,11 +46,11 @@ render() {
   ;
 
   const signUp =
-    <Grid style={{marginTop: '1%'}} container={true} direction='row' alignItems='flex-start'>
+    <Grid style={{marginTop: '1%'}} container={true} direction='row' alignItems='center'>
       <div>
         <Grid item style={{width: '250px', margin: 'auto'}}>
           <Card>
-            <CardContent mt='30px'>
+            <CardContent>
               <Grid container={true} direction='column' justify='space-evenly' alignItems='center' alignContent='center'>
                 <Grid item>
                   <h1>Sign Up</h1>
