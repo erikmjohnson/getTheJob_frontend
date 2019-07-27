@@ -4,24 +4,11 @@ import { Link } from 'react-router-dom';
 import { AuthForm } from '../AuthForm/AuthForm';
 import { connect } from 'react-redux';
 import { Grid } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 import Card from '@material-ui/core/Card';
 import CardContent from "@material-ui/core/CardContent";
-import  BackgroundImage from '../../styles/background.jpg';
+import './_landing.scss';
 
 class Landing extends React.Component {
-
-  classes = makeStyles({
-    root: {
-      width: 300,
-    },
-    backgroundImage: {
-      backgroundImage: ('../../styles/background.jpg'),
-    },
-    pos: {
-      marginTop: 12,
-    },
-  });
 
   handleSignUp = user => {
     return this.props.pDoSignUp(user);
@@ -34,10 +21,10 @@ class Landing extends React.Component {
 render() {
 
   const signIn =
-    <Grid container={true} direction='row' justify='space-evenly' alignItems='center' spacing={0}>
-      <div style={{backgroundImage: `url(${BackgroundImage})`, height: '100vh', width: '100vw', alignItems: 'center'}}>
+    <Grid style={{marginTop: '1%'}} container={true} direction='row' alignItems='flex-start' spacing={0}>
+      <div>
         <Grid item style={{width: '250px', margin: 'auto'}}>
-          <Card className={this.classes.root}>
+          <Card>
             <CardContent>
               <Grid container={true} direction='column' justify='space-evenly' alignItems='center' alignContent='center' spacing={0} >
                 <Grid item>
@@ -47,35 +34,39 @@ render() {
                   <AuthForm type='signin' onComplete={this.handleSignIn}/>
                 </Grid>
                 <Grid item>
-                  <Link to='/signup'>New user, click here to sign up</Link>
+                  <Link to='/signup'>Create an Account</Link>
                 </Grid>
               </Grid>
             </CardContent>
           </Card>
         </Grid>
       </div>
+      <img className='handShake' src={require('../../styles/background.jpg')} alt='People Shaking Hands'/>
     </Grid>
   ;
 
   const signUp =
-    <Grid container={true} direction='column' justify='center' alignItems='center' spacing={0} >
-      <div style={{backgroundImage: `url(${BackgroundImage})`, height: '100vh', width: '100vw', alignItems: 'center'}}>
-        <Card style={{width: '250px', margin: 'auto'}}>
-          <CardContent>
-            <Grid container={true} direction='column' justify='space-evenly' alignItems='center' spacing={0} >
-              <Grid item >
-                <h1>Sign Up</h1>
+    <Grid style={{marginTop: '1%'}} container={true} direction='row' alignItems='flex-start'>
+      <div>
+        <Grid item style={{width: '250px', margin: 'auto'}}>
+          <Card>
+            <CardContent mt='30px'>
+              <Grid container={true} direction='column' justify='space-evenly' alignItems='center' alignContent='center'>
+                <Grid item>
+                  <h1>Sign Up</h1>
+                </Grid>
+                <Grid item>
+                  <AuthForm type='signup' onComplete={this.handleSignUp}/>
+                </Grid>
+                <Grid item>
+                  <Link to='/signin'>Existing Account</Link>
+                </Grid>
               </Grid>
-              <Grid item>
-                <AuthForm type='signup' onComplete={this.handleSignUp}/>
-              </Grid>
-              <Grid item>
-                <Link to='/'>Already have an Account? Click here to login</Link>
-              </Grid>
-            </Grid>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        </Grid>
       </div>
+      <img className='handShake' src={require('../../styles/background.jpg')} alt='People Shaking Hands'/>
     </Grid>
   ;
 
