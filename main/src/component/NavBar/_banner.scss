@@ -1,12 +1,26 @@
 #banner {
+  display: flex;
+  flex-direction: column;
   background-color: #151C23;
   margin: 0;
-  height: 30vh;
+  height: 25vh;
   margin-top: 1vh;
 }
 
 #banner > h1,h2 {
   margin: 0;
   color: white;
+  font-family: Impact;
+  margin-left: 5%;
 }
 
+#banner > h1 {
+  font-size: 5vw;
+}
+
+#banner > h2 {
+  display: flex;
+  font-size: 2vw;
+  margin-top: auto;
+  margin-left: 6%;
+}
