@@ -13,6 +13,7 @@ import uuid from 'uuid';
 import superagent from "superagent";
 import { Card } from "@material-ui/core";
 import CardContent from '@material-ui/core/CardContent';
+import './jobSearch.scss';
 
 // const API_URL = 'https://get-the-job-backend.herokuapp.com/';
 const API_URL = 'http://localhost:8000/';
@@ -43,25 +44,29 @@ export class JobSearch extends Component {
 
     render() {
         return (
-            <div style={{backgroundColor:'darkgray', minHeight: '100vh'}}>
-                <Button id='logOut' variant='contained' color='default' onClick={this.handleLogout}> Sign Out </Button>
-                <Typography>
-                <button onClick={this.handleRenderProfile}>
-                    <Link component={RouterLink} to="/myjobs"> My Jobs </Link>
-                </button>
-                </Typography>
+            <div>
+              <div className='navButtons'>
+                <Button variant='contained' color='default' onClick={this.handleRenderProfile}>
+                  <Link component={RouterLink} to="/myjobs"> My Jobs </Link>
+                </Button>
+                <Button id='logOut' variant='contained' color='default' onClick={this.handleLogout}>
+                  Sign Out
+                </Button>
+              </div>
                 <ul>
                     <JobSearchForm onComplete={this.handleJobRender}/>
-                    <Grid container spacing={24} style={{padding:24}}>
-                    { this.props.searchState.map(current => ( <Grid item xs={6} sm={6} lg={4} xl={3}>
+                    <Grid style={{padding:24}}>
+                    { this.props.searchState.map(current => (
+                      <Grid style={{marginTop: 15}}>
                         <Card>
                             <CardContent>
-                       <li style={{backgroundColor: '#f5f5f5'}} key={uuid()}>
-                           <p style={{ fontWeight: 'bold', backgroundColor: 'yellow'}}>Organization: {current.organization}</p><br/>
-                           <p>{current.title}</p><br/>
-                           <p>{current.location}</p><br/>
-                           <p>{current.summary}</p><br/>
-                           <p>{current.created}</p><br/>
+                       <li key={uuid()}>
+                         <p>{current.title}</p><br/>
+                         <p>Organization: {current.organization}</p><br/>
+                         <p>Location: {current.location}</p><br/>
+                         <p>Summary:</p><br />
+                         <p>{current.summary}</p><br/>
+                         <p>Posted: {current.created}</p><br/>
                        <br/><a href={current.url}>{current.url}</a><br/>
                        <Button variant='contained' color='default' onClick={this.handleAddJob.bind(null, current)}>Add Job</Button>
                        </li>
