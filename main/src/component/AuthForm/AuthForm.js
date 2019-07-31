@@ -33,6 +33,8 @@ export class AuthForm extends Component {
           <form onSubmit={this.handleSubmit}>
             <Grid item>
               <TextField
+                style={{width: '300px', height: '75px'}}
+                inputProps={{style: {fontSize: '32px'}}}
                 variant='filled'
                 name='username'
                 label='username'
@@ -41,19 +43,21 @@ export class AuthForm extends Component {
                 onChange={this.handleChange}
               />
             </Grid>
-            <Grid item>
+            <Grid>
                 <TextField
-                variant='filled'
-                name='password'
-                label='password'
-                type='password'
-                value={this.state.password}
-                onChange={this.handleChange}
+                  style={{width: '300px', height: '75px'}}
+                  inputProps={{style: {fontSize: '32px'}}}
+                  variant='filled'
+                  name='password'
+                  label='password'
+                  type='password'
+                  value={this.state.password}
+                  onChange={this.handleChange}
               />
             </Grid>
             <Grid container={true} direction='column' justify='center' alignContent='center'>
               <Grid item>
-                <Button variant='contained' color='primary' type='submit'>{type}</Button>
+                <Button style={{marginTop: '30%', width: '150px', fontSize: '15px'}} variant='contained' color='primary' type='submit'>{type}</Button>
               </Grid>
             </Grid>
           </form>

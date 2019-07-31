@@ -21,21 +21,17 @@ class Landing extends React.Component {
 render() {
 
   const signIn =
-    <Grid style={{marginTop: '1%'}} container={true} direction='row' alignItems='center'>
+    <Grid container={true} direction='row' alignItems='center'>
       <div className='authForm'>
-        <Grid item style={{width: '75%'}}>
+        <Grid item style={{width: '60%'}}>
           <Card>
             <CardContent>
               <Grid container={true} direction='column' justify='space-evenly' alignItems='center' alignContent='center'>
-                <Grid item style={{marginBottom:'5%'}}>
-                  <h1>Login</h1>
-                </Grid>
+                <h1 className='loginh1'>Login</h1>
                 <Grid item>
                   <AuthForm type='signin' onComplete={this.handleSignIn}/>
                 </Grid>
-                <Grid item>
-                  <Link to='/signup'>Create an Account</Link>
-                </Grid>
+                <Link className='toggle' to='/signup'>Create an Account</Link>
               </Grid>
             </CardContent>
           </Card>
@@ -46,21 +42,17 @@ render() {
   ;
 
   const signUp =
-    <Grid style={{marginTop: '1%'}} container={true} direction='row' alignItems='center'>
-      <div>
-        <Grid item style={{width: '250px', margin: 'auto'}}>
+    <Grid container={true} direction='row' alignItems='center'>
+      <div className='authForm'>
+        <Grid item style={{width: '60%'}}>
           <Card>
             <CardContent>
               <Grid container={true} direction='column' justify='space-evenly' alignItems='center' alignContent='center'>
-                <Grid item>
-                  <h1>Sign Up</h1>
-                </Grid>
-                <Grid item>
+                <h1 className='loginh1'>Sign Up</h1>
+                <Grid>
                   <AuthForm type='signup' onComplete={this.handleSignUp}/>
                 </Grid>
-                <Grid item>
-                  <Link to='/signin'>Existing Account</Link>
-                </Grid>
+                <Link className='toggle' to='/signin'>Existing Account</Link>
               </Grid>
             </CardContent>
           </Card>
@@ -72,7 +64,7 @@ render() {
 
   const {location} = this.props;
   return(
-    <div>
+    <div id='loginContainer'>
       <nav>
         {location.pathname === '/' ? signIn : undefined}
         {location.pathname === '/signup' ? signUp : undefined}
