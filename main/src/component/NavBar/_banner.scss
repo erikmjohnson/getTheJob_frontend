@@ -1,26 +1,31 @@
 #banner {
-  display: flex;
-  flex-direction: column;
   background-color: #151C23;
   margin: 0;
-  height: 25vh;
-  margin-top: 1vh;
+  height: 150px;
+  margin-top: 10px;
+}
+#bannerContainer {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 1700px;
+  height: 150px;
 }
 
-#banner > h1,h2 {
+#bannerContainer > h1,h2 {
   margin: 0;
   color: white;
   font-family: Impact;
   margin-left: 5%;
 }
 
-#banner > h1 {
-  font-size: 5vw;
+#bannerContainer > h1 {
+  font-size: 75px;
 }
 
-#banner > h2 {
+#bannerContainer > h2 {
   display: flex;
-  font-size: 2vw;
+  font-size: 30px;
   margin-top: auto;
   margin-left: 6%;
 }

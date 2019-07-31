@@ -12,11 +12,11 @@ class Landing extends React.Component {
 
   handleSignUp = user => {
     return this.props.pDoSignUp(user);
-};
+  };
 
   handleSignIn = (user) => {
     return this.props.pDoSignIn(user.username, user.password);
-};
+  };
 
 render() {
 
@@ -73,13 +73,13 @@ render() {
   const {location} = this.props;
   return(
     <div>
-    <nav>
-    {location.pathname === '/' ? signIn : undefined}
-  {location.pathname === '/signup' ? signUp : undefined}
-</nav>
-  </div>
+      <nav>
+        {location.pathname === '/' ? signIn : undefined}
+        {location.pathname === '/signup' ? signUp : undefined}
+      </nav>
+    </div>
   );
-  }
+}
 }
 
 const mapDispatchToProps = dispatch => ({
