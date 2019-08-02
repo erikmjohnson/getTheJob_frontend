@@ -1,7 +1,33 @@
 li {
   background: #f5f5f5;
+  padding: 10px !important;
 }
 
-.logOut {
-  margin-left: auto;
+#logOut {
+  margin-right: 30px
+}
+
+#profileButton {
+  margin-left: 30px;
+}
+
+#profile {
+  color: black;
+}
+
+#profile:hover {
+  text-decoration: none;
+  color: black;
+}
+
+#profile:active {
+   text-decoration: none;
+}
+
+.navButtons {
+  display: flex;
+  margin: auto;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-bottom: 50px;
 }
