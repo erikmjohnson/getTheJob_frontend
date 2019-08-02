@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './JobSearchForm';
 import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid'
+import './jobSearchForm.scss';
 
 let initialState = {title: '', location: ''};
 
@@ -27,8 +27,8 @@ export default class JobSearchForm extends Component {
 
   render() {
     return(
-      <Grid container={true} direction='column' justify='space-evenly' alignItems='center' alignContent='center' spacing={0} >
-        <form style={{backgroundColor:'darkgray', height: '100%'}} onSubmit={this.handleSubmit}>
+      <div id='searchForm'>
+        <form onSubmit={this.handleSubmit}>
           <input
             type='text'
             name='title'
@@ -43,9 +43,9 @@ export default class JobSearchForm extends Component {
             onChange={this.handleChange}
             placeholder='zip code'
           />
-          <Button variant='contained' color='primary' type='submit'>Search</Button>
+          <Button style={{ marginBottom: 10}} variant='contained' color='primary' type='submit'>Search</Button>
         </form>
-      </Grid>
+      </div>
     )
   }
 }
