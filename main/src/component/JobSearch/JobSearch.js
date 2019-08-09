@@ -44,9 +44,12 @@ export class JobSearch extends Component {
   render() {
     return (
       <div>
+        <h1>
+          SEARCH FOR JOBS
+        </h1>
         <div className='navButtons'>
           <Button id='profileButton' variant='contained' color='default' onClick={this.handleRenderProfile}>
-            <Link  id='profile' component={RouterLink} to="/myjobs"> My Jobs </Link>
+            <Link id='profile' component={RouterLink} to="/myjobs"> My Jobs </Link>
           </Button>
           <Button id='logOut' variant='contained' color='default' onClick={this.handleLogout}>
             Sign Out
@@ -67,7 +70,9 @@ export class JobSearch extends Component {
                       <p>{current.summary}</p><br/>
                       <p>Posted: {current.created}</p><br/>
                       <br/><a href={current.url}>{current.url}</a><br/>
-                      <Button variant='contained' color='default' onClick={this.handleAddJob.bind(null, current)}>Add Job</Button>
+                      <Button variant='contained' color='default' onClick={this.handleAddJob.bind(null, current)}>
+                        Add Job
+                      </Button>
                     </li>
                   </CardContent>
                 </Card>
