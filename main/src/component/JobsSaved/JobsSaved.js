@@ -6,7 +6,7 @@ import uuid from "uuid";
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import superagent from 'superagent';
-import * as authAuctions from "../../action/auth-actions";
+import { remove } from "../../action/auth-actions";
 import { Link as RouterLink } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
 
@@ -15,26 +15,26 @@ const API_URL = 'http://localhost:8000/delete';
 export class JobsSaved extends Component {
 
   handleRemoveProfile = () => {
-    this.props.removeProfile();
+    this.props.mappedRemoveProfile();
   };
 
   handleDelete = (job) => {
-    this.props.removeJob(job);
+    this.props.mappedRemoveJob(job);
     return superagent.delete(`${API_URL}/${this.props.userState.username}`)
       .send(job)
       .catch(err => console.log(err));
   };
 
   handleLogout = () => {
-    return this.props.logOut();
+    return this.props.mappedLogOut();
   };
 
   render() {
     return (
       <div>
-        <h1>
+        <h3>
           SAVED JOBS
-        </h1>
+        </h3>
         <div className='navButtons'>
           <Button id='profileButton' variant='contained' color='default' >
             <Link id='profile' component={RouterLink} to="/user" onClick={this.handleRemoveProfile}> Search Page </Link>
@@ -45,16 +45,17 @@ export class JobsSaved extends Component {
         </div>
         <ul>
           { this.props.profileState.map(current => (
-            <Card>
+            <Card style={{marginTop: 15, marginLeft: 24, marginRight: 24}}>
               <CardContent>
-                <li style={{backgroundColor: '#f5f5f5'}} key={uuid()}>
-                  <p style={{ fontWeight: 'bold'}}>Organization: {current.organization}</p><br/>
-                  <p>{current.title}</p><br/>
+                <li key={uuid()}>
+                  <p className='title'>{current.title}</p><br/>
+                  <p>Organization: {current.organization}</p><br/>
                   <p>{current.location}</p><br/>
+                  <p>Summary:</p><br />
                   <p>{current.summary}</p><br/>
-                  <p>{current.created}</p><br/>
-                  <br/><a href={current.url}>{current.url}</a><br/>
-                  <Button variant='contained' color='default' onClick={this.handleDelete.bind(null, current)}>
+                  <p>Posted: {current.created}</p><br/>
+                  <a className='jobUrl' href={current.url}>{current.url}</a><br/>
+                  <Button className='button' variant='contained' color='default' onClick={this.handleDelete.bind(null, current)}>
                     Delete Job
                   </Button>
                 </li>
@@ -77,15 +78,15 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    removeProfile: () => {
+    mappedRemoveProfile: () => {
       dispatch(removeProfile());
     },
-    logOut: () => {
-      dispatch(authAuctions.remove());
+    mappedLogOut: () => {
+      dispatch(remove());
     },
-    removeJob: (job) => {
+    mappedRemoveJob: (job) => {
       dispatch(removeJob(job))
-    }
+    },
   }
 };
 
