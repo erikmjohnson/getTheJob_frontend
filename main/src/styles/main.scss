@@ -1,4 +1,5 @@
 @import "reset";
+@import "variable";
 
 body {
   height: 100%;
@@ -6,4 +7,11 @@ body {
   margin: 0;
   background-color: darkgray;
   background-size: auto;
+}
+
+h3 {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 50px;
+  font-family: Impact;
 }

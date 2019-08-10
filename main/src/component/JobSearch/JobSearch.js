@@ -28,7 +28,8 @@ export class JobSearch extends Component {
   };
 
   handleLogout = () => {
-    return this.props.logOut();
+    this.props.mappedRemoveJobs();
+    return this.props.mappedLogOut();
   };
 
   handleAddJob = (profile) => {
@@ -38,15 +39,16 @@ export class JobSearch extends Component {
   };
 
   handleRenderProfile = () => {
+    this.props.mappedRemoveJobs();
     return this.props.mappedProfile(this.props.authState.username)
   };
 
   render() {
     return (
       <div>
-        <h1>
+        <h3>
           SEARCH FOR JOBS
-        </h1>
+        </h3>
         <div className='navButtons'>
           <Button id='profileButton' variant='contained' color='default' onClick={this.handleRenderProfile}>
             <Link id='profile' component={RouterLink} to="/myjobs"> My Jobs </Link>
@@ -63,14 +65,14 @@ export class JobSearch extends Component {
                 <Card>
                   <CardContent>
                     <li key={uuid()}>
-                      <p>{current.title}</p><br/>
+                      <p className='title'>{current.title}</p><br/>
                       <p>Organization: {current.organization}</p><br/>
                       <p>Location: {current.location}</p><br/>
                       <p>Summary:</p><br />
                       <p>{current.summary}</p><br/>
                       <p>Posted: {current.created}</p><br/>
-                      <br/><a href={current.url}>{current.url}</a><br/>
-                      <Button variant='contained' color='default' onClick={this.handleAddJob.bind(null, current)}>
+                      <a className='jobUrl' href={current.url}>{current.url}</a><br/>
+                      <Button className='button' variant='contained' color='default' onClick={this.handleAddJob.bind(null, current)}>
                         Add Job
                       </Button>
                     </li>
@@ -100,12 +102,15 @@ const mapDispatchToProps = dispatch => {
     mappedJobCreates: (language, location) => {
       dispatch(JobSearchActions.loadJobSearch(language, location));
       },
-    logOut: () => {
+    mappedLogOut: () => {
       dispatch(authAuctions.remove());
       },
     mappedProfile: (username) => {
       dispatch(profileActions.loadProfile(username))
       },
+    mappedRemoveJobs: () => {
+      dispatch(JobSearchActions.removeSearch())
+    }
   }
 };
 

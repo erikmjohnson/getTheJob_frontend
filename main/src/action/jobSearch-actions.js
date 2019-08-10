@@ -16,6 +16,12 @@ export const createJob = (organization, title, location, summary, created = new 
   }
 };
 
+export const removeSearch = () => {
+  return {
+  type: 'REMOVE_SEARCH',
+  }
+};
+
 export const loadJobSearch = (language, location) => store => {
 
   const JOB_API = `https://data.usajobs.gov/api/Search?Keyword=${language}&LocationName=${location}`;
