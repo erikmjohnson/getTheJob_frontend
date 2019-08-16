@@ -1,7 +1,7 @@
 import superagent from "superagent";
 import uuid from 'uuid';
 
-export const createJob = (organization, title, location, summary, created = new Date(), url) => {
+export const createJob = (organization, title, location, summary, date, url) => {
   return {
     type: 'JOB_SEARCH',
     payload: {
@@ -10,7 +10,7 @@ export const createJob = (organization, title, location, summary, created = new 
       title,
       location,
       summary,
-      created,
+      date,
       url
     }
   }

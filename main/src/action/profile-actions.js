@@ -1,6 +1,6 @@
 import superagent from 'superagent';
 
-export const createProfile = (id, organization, title, location, summary, created, url) => {
+export const createProfile = (id, organization, title, location, summary, date, url) => {
   return {
     type: 'PROFILE',
     payload: {
@@ -9,7 +9,7 @@ export const createProfile = (id, organization, title, location, summary, create
       title,
       location,
       summary,
-      created,
+      date,
       url
     }
   }

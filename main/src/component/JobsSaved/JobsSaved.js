@@ -10,8 +10,8 @@ import { remove } from "../../action/auth-actions";
 import { Link as RouterLink } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
 
-// const API_URL = 'http://localhost:8000/delete';
-const API_URL = 'https://get-the-job-backend.herokuapp.com/delete';
+// const API_URL = 'http://localhost:8000/delete/';
+const API_URL = 'https://get-the-job-backend.herokuapp.com/delete/';
 
 export class JobsSaved extends Component {
 
@@ -21,7 +21,7 @@ export class JobsSaved extends Component {
 
   handleDelete = (job) => {
     this.props.mappedRemoveJob(job);
-    return superagent.delete(`${API_URL}/${this.props.userState.username}`)
+    return superagent.delete(`${API_URL}${this.props.userState.username}`)
       .send(job)
       .catch(err => console.log(err));
   };
@@ -54,7 +54,7 @@ export class JobsSaved extends Component {
                   <p>{current.location}</p><br/>
                   <p>Summary:</p><br />
                   <p>{current.summary}</p><br/>
-                  <p>Posted: {current.created}</p><br/>
+                  <p>Posted: {current.date}</p><br/>
                   <a className='jobUrl' href={current.url}>{current.url}</a><br/>
                   <Button className='button' variant='contained' color='default' onClick={this.handleDelete.bind(null, current)}>
                     Delete Job
