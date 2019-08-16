@@ -14,8 +14,8 @@ import { Card } from "@material-ui/core";
 import CardContent from '@material-ui/core/CardContent';
 import './jobSearch.scss';
 
-// const API_URL = 'https://get-the-job-backend.herokuapp.com/';
-const API_URL = 'http://localhost:8000/';
+const API_URL = 'https://get-the-job-backend.herokuapp.com/';
+// const API_URL = 'http://localhost:8000/';
 const SAVE_ROUTE = `save/`;
 
 export class JobSearch extends Component {
