@@ -25,7 +25,7 @@ export const removeJob = (job) => ({
 });
 
 // const API_URL = 'http://localhost:8000/retrieve/';
-const API_URL = 'https://get-the-job-backend.herokuapp.com/';
+const API_URL = 'https://get-the-job-backend.herokuapp.com/retrieve/';
 
 export const loadProfile = (username) => store => {
   return superagent.get(`${API_URL}${username}`)
