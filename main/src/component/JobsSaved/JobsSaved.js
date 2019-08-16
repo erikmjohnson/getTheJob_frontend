@@ -10,7 +10,8 @@ import { remove } from "../../action/auth-actions";
 import { Link as RouterLink } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
 
-const API_URL = 'http://localhost:8000/delete';
+// const API_URL = 'http://localhost:8000/delete';
+const API_URL = 'https://get-the-job-backend.herokuapp.com/delete';
 
 export class JobsSaved extends Component {
 
