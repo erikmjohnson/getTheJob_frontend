@@ -12,13 +12,11 @@ export default class App extends Component {
       <main id='main'>
         <BrowserRouter>
           <NavBar/>
-
             <Route path='*' component={AuthRedirect}/>
             <Route exact path="/" component={Landing}/>
             <Route exact path="/user" component={JobSearch}/>
             <Route exact path="/signup" component={Landing}/>
             <Route exact path="/myjobs" component={JobsSaved}/>
-
         </BrowserRouter>
     </main>
   );

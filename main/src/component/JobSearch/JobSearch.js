@@ -70,7 +70,7 @@ export class JobSearch extends Component {
                       <p>Location: {current.location}</p><br/>
                       <p>Summary:</p><br />
                       <p>{current.summary}</p><br/>
-                      <p>Posted: {current.created}</p><br/>
+                      <p>Posted: {current.date}</p><br/>
                       <a className='jobUrl' href={current.url}>{current.url}</a><br/>
                       <Button className='button' variant='contained' color='default' onClick={this.handleAddJob.bind(null, current)}>
                         Add Job
